@@ -9,7 +9,9 @@ $json = json_decode(file_get_contents("http://payway.bubileg.cz/api/echo"), true
 $signature = base64_decode($json["signature"]);
 $data = $json["resultCode"] . "|" . $json["resultMessage"] . "|" . $json["dttm"];
 echo $data;
+/*
 echo "<br>";
 var_dump($signature);
+*/
 echo "<br>";
 echo(openssl_verify($data, $signature, $publicK));
